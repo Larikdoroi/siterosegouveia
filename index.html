@@ -731,17 +731,13 @@ background:#2f241d !important;
 .reveal-on-scroll{
   opacity:0;
   transform:translateY(34px);
-  filter:blur(4px);
   transition:
     opacity .78s cubic-bezier(.22,.61,.36,1),
-    transform .78s cubic-bezier(.22,.61,.36,1),
-    filter .78s ease;
-  will-change:opacity,transform,filter;
+    transform .78s cubic-bezier(.22,.61,.36,1);
 }
 .reveal-on-scroll.is-visible{
   opacity:1;
   transform:translateY(0);
-  filter:blur(0);
 }
 .reveal-on-scroll.reveal-delay-1{transition-delay:.08s}
 .reveal-on-scroll.reveal-delay-2{transition-delay:.16s}
@@ -754,8 +750,8 @@ background:#2f241d !important;
   .nav a{padding-bottom:5px}
   .reveal-on-scroll{
     transform:translateY(24px);
-    filter:blur(2px);
   }
+  .header{backdrop-filter:none;background:rgba(248,243,236,.98)}
   .hero-photo img{object-position:center 8%}
 }
 @media(prefers-reduced-motion:reduce){
@@ -1385,7 +1381,7 @@ carousel.addEventListener('mouseenter',()=>clearInterval(timer));carousel.addEve
 document.addEventListener("DOMContentLoaded", function(){
   /* Revelação progressiva das seções e blocos principais */
   const revealTargets = [
-    ...document.querySelectorAll("main section, body > section"),
+    ...document.querySelectorAll("main section:not(.hero), body > section:not(.hero)"),
     ...document.querySelectorAll(".choice-card, .feature, .step, .review, .contact-item")
   ];
 
